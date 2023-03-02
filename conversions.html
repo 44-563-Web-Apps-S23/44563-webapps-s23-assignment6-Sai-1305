@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+ <head><title>Conversions</title></head>
+<body>
+
+<h1>Sai Chaitanya Vishnu Kanth Inavolu shows currency conversions</h1>
+
+<form>
+    <label for="form1_base_amount">Enter base amount </label>
+    <input type ="number" id="form1_base_amount" name="form1_base_amount" value=50> <br>
+
+    <label for="form1_conversion_rate">Enter the conversion rate </label>
+    <input type ="number" id="form1_conversion_rate" name="form1_conversion_rate" autofocus> <br>
+
+    <input type="button" onclick="convert()" value="Show conversions">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+
+function convert(){
+    console.log("Getting form values")
+    base_value = document.getElementById("form1_base_amount").value
+    conversion_rate = document.getElementById("form1_conversion_rate").value
+    var toShow = ""
+    var product = 1
+    for(i = 0 ; i < 5 ; i++){
+        let result = base_value * conversion_rate * product
+        result = Math.round(result * 10) / 10
+        toShow = toShow + " " + base_value * product + " is " + result + ";"
+        product*=2
+    }
+    document.getElementById("result").innerHTML = "Conversions are " + toShow;
+
+
+
+
+
+
+    // confirmed = confirm("Are these the values? "+age+" and "+nick)
+    
+    // out = document.getElementById("result")
+    // if(confirmed){
+    //     out.innerHTML = "Values were confirmed"
+    // } else {
+    //     out.innerHTML = "Values were not confirmed"
+    // }
+}
+</script>
+
+</body>
+</html> 
