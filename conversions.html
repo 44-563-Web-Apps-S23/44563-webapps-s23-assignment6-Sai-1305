@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html>
  <head><title>Conversions</title></head>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" 
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" 
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 <body>
-
+<div class="container-fluid">
 <h1>Sai Chaitanya Vishnu Kanth Inavolu shows currency conversions</h1>
 
 <form>
+<div class="form-group">
     <label for="base_value">Enter base amount</label>
-    <input type="number" id="base_value" name="base_value" value=50> <br>
-
+    <input type="number" id="base_value" name="base_value" value=50 class="form-control"> <br>
+</div>
+<div class="form-group">
     <label for="conversion_rate">Enter the conversion rate</label>
-    <input type="number" id="conversion_rate" name="conversion_rate" value=35> <br>
-
+    <input type="number" id="conversion_rate" name="conversion_rate" value=35 class="form-control"> <br>
+</div>
     <input type="button" onclick="convert()" value="Show conversions">
 </form>
+
 <p id="form1_result">This text will be replaced </p>
 
 <form>
-    <input type="radio" onclick="chooseOp()" id="rg1_avg" name="operation"  value="mean"  checked >
+<div class="form-group">
+    <input type="radio" onclick="chooseOp()" id="rg1_avg" name="operation"  value="mean"  checked class="form-control">
     <label for="average">average</label></br>
-  
+</div>
+<div class="form-group">
     <input type="radio" onclick="chooseOp()" id="rg1_max" name="operation" value="maximum">
     <label for="max">max</label></br>
-  
-    <input type="radio" onclick="chooseOp()" id="rg1_min" name="operation" value="minimum">
+</div>
+    <input type="radio" onclick="chooseOp()" id="rg1_min" name="operation" value="minimum" class="form-control">
     <label for="min">min</label></br>
+</div>
 </form>
 <p id="form2_result">This text will be replaced </p>
-
+</div>
 <script> 
 
     function convert(){
