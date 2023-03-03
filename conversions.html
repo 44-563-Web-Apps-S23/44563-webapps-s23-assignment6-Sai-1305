@@ -6,49 +6,68 @@
 <h1>Sai Chaitanya Vishnu Kanth Inavolu shows currency conversions</h1>
 
 <form>
-    <label for="form1_base_amount">Enter base amount </label>
-    <input type ="number" id="form1_base_amount" name="form1_base_amount" value=50> <br>
+    <label for="base_value">Enter base amount</label>
+    <input type="number" id="base_value" name="base_value" value=50> <br>
 
-    <label for="form1_conversion_rate">Enter the conversion rate </label>
-    <input type ="number" id="form1_conversion_rate" name="form1_conversion_rate" autofocus> <br>
+    <label for="conversion_rate">Enter the conversion rate</label>
+    <input type="number" id="conversion_rate" name="conversion_rate" value=35> <br>
 
     <input type="button" onclick="convert()" value="Show conversions">
 </form>
+<p id="form1_result">This text will be replaced </p>
 
-
-<p id="result">This text will be replaced </p>
+<form>
+    <input type="radio" onclick="chooseOp()" id="rg1_avg" name="operation"  value="mean"  checked >
+    <label for="average">average</label></br>
+  
+    <input type="radio" onclick="chooseOp()" id="rg1_max" name="operation" value="maximum">
+    <label for="max">max</label></br>
+  
+    <input type="radio" onclick="chooseOp()" id="rg1_min" name="operation" value="minimum">
+    <label for="min">min</label></br>
+</form>
+<p id="form2_result">This text will be replaced </p>
 
 <script> 
 
-function convert(){
-    console.log("Getting form values")
-    base_value = document.getElementById("form1_base_amount").value
-    conversion_rate = document.getElementById("form1_conversion_rate").value
-    var toShow = ""
-    var product = 1
-    for(i = 0 ; i < 5 ; i++){
-        let result = base_value * conversion_rate * product
-        result = Math.round(result * 10) / 10
-        toShow = toShow + " " + base_value * product + " is " + result + ";"
-        product*=2
+    function convert(){
+        amount = document.getElementById("base_value").value;
+        value = document.getElementById("conversion_rate").value;
+        toShow = "";
+        out = document.getElementById("form1_result")
+        
+        for(let i = 0 ; i < 5 ; i++){
+            let multiplier = 2**i;
+            let result = Math.round(amount * value * multiplier * 10) / 10
+            toShow = toShow + " " + amount * multiplier + " is " + result + ";"
+        }
+        document.getElementById("form1_result").innerHTML = "Conversions are:" + toShow;
     }
-    document.getElementById("result").innerHTML = "Conversions are " + toShow;
-
-
-
-
-
-
-    // confirmed = confirm("Are these the values? "+age+" and "+nick)
     
-    // out = document.getElementById("result")
-    // if(confirmed){
-    //     out.innerHTML = "Values were confirmed"
-    // } else {
-    //     out.innerHTML = "Values were not confirmed"
-    // }
-}
+    function chooseOp(){
+        let result = 0;
+        let toString = "";
+        let amount = document.getElementById("base_value").value;
+        let value = document.getElementById("conversion_rate").value;
+        let avg = document.getElementById("rg1_avg").checked;
+        let max = document.getElementById("rg1_max").checked;
+        let min = document.getElementById("rg1_min").checked;
+        if(avg){
+            result = (parseInt(amount)+parseInt(value))/2;
+            toString = toString + "avg of " + amount + " and " + value + " is " + result
+        }
+        else if(max){
+            result = Math.max(amount,value);
+            toString = toString + "max of " + amount + " and " + value + " is " + result
+        }
+        else if(min){
+            result = Math.min(amount,value);
+            toString = toString + "min of " + amount + " and " + value + " is " + result
+        }
+        document.getElementById("form2_result").innerHTML = toString
+    }
 </script>
-
+    
 </body>
-</html> 
+</html>
+    
