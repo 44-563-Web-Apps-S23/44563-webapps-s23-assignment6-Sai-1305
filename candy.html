@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Candy</title></head>
+ 
+<body>
+
+<h1>Sai Chaitanya Vishnu Kanth chooses candy</h1>
+
+<form>
+    <label for="form1_chocolate">Dark Chocolate</label>
+    <input type="checkbox" id="cg1_chocolate" value="True" name="candies"><br>
+
+    <label for="form1_nuts">Nuts</label>
+    <input type="checkbox" id="cg1_nuts" value="True" name="candies"><br>
+
+    <label for="form1_chewy">Chewy</label>
+    <input type="checkbox" id="cg1_chewy" value="False" name="candies"><br><br>
+
+    <input type="button" value="Select a box" onclick="selectBox()">
+</form><br>
+
+
+<form>
+    <label for="form2_size">Enter the size</label>
+    <input type="text" id="form2_size" value="size"><br>
+
+    <label for="form2_price">Enter price</label>
+    <input type="text" id="form2_price"><br><br>
+
+    <input type="button" value="Update the box" onclick="updateBox()">
+</form><br>
+
+<p id="form1_result">Changes are seen here</p>
+<script>
+    my_candy_box = {}
+    function selectBox(){
+        my_candy_box = {}
+        dark = document.getElementById("cg1_chocolate").checked
+        nuts = document.getElementById("cg1_nuts").checked
+        chewy = document.getElementById("cg1_chewy").checked
+
+        if(dark){
+            my_candy_box.dark = true;
+        }
+        else{
+            my_candy_box.dark = false;
+        }
+        if(nuts){
+            my_candy_box.nuts = true;
+        }
+        else{
+            my_candy_box.nuts = false;
+        }
+        if(chewy){
+            my_candy_box.chewy = true;
+        }
+        else{
+            my_candy_box.chewy = false;
+        }
+
+        document.getElementById("form1_result").innerHTML = JSON.stringify(my_candy_box)
+    }
+
+    function updateBox(){
+        let size = document.getElementById("form2_size").value;
+        let price = document.getElementById("form2_price").value;
+        my_candy_box["size"] = size;
+        my_candy_box["price"] = price;
+        document.getElementById("form1_result").innerHTML = JSON.stringify(my_candy_box)
+    }
+</script>
+</body>
+</html>
